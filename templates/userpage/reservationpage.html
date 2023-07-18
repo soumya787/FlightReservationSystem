@@ -1,0 +1,69 @@
+{% extends 'navbar/usernavbar.html' %}
+{% block title %}
+ReservationPage
+{% endblock %}
+
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+    <h2 align="center">Book tickets</h2>
+    <div align="center">
+         <table align="center">
+            <tr>
+                <td>FlightNumber</td>
+                <td><input type="text" name="txtFlightNum" value="{{ data.FlightNumber }}" disabled></td>
+            </tr>
+             <tr>
+                <td>FlightName</td>
+                 <td>
+                     <input type="text" name="ddlFlightName" value="{{ data.FlightName }}" disabled>
+                 </td>
+            </tr>
+             <tr>
+                <td>ArrivalCity</td>
+                 <td>
+                     <input type="text" name="ddlArrivalCity" value="{{ data.ArrivalCity }}" disabled>
+                 </td>
+            </tr>
+             <tr>
+                <td>DestinationCity</td>
+                 <td>
+                     <input name="ddlDestCity" type="text" value="{{ data.DestinationCity }}" disabled>
+                 </td>
+            </tr>
+             <tr>
+                <td>Date</td>
+                <td><input type="text" name="txtdate" value="{{ data.Date }}" disabled></td>
+            </tr>
+             <tr>
+                <td>Time</td>
+                <td><input type="text" name="txtTime" value="{{ data.ArrivalTime }}" disabled></td>
+            </tr>
+             <tr>
+                <td>Cost</td>
+                <td><input type="number" name="txtCOST" value="{{ data.Cost }}"></td>
+            </tr>
+             <tr>
+                <td>FirstName</td>
+                <td><input type="text" name="txtFname"></td>
+            </tr>
+             <tr>
+                <td>LastName</td>
+                <td><input type="text" name="txtLname"></td>
+            </tr>
+             <tr>
+                <td>Phno</td>
+                <td><input type="number" name="txtPhno"></td>
+            </tr>
+             <tr>
+                <td>Age</td>
+                <td><input type="number" name="txtAge"></td>
+            </tr>
+             <tr>
+                <td><input type="submit" name="btnSub" value="Add"></td>
+            </tr>
+         </table>
+    </div>
+
+</form>
+{% endblock %}

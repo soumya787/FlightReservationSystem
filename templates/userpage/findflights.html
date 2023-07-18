@@ -1,0 +1,78 @@
+{% extends 'navbar/usernavbar.html' %}
+
+{% block title %}
+FlightsList
+{% endblock %}
+
+{% block content %}
+<h2 align="center">Get the Flight List</h2>
+<hr>
+<div id="div1" style="float:left;border-right:2px red dotted;width:25%">
+    <form action="findflights" method="post">
+        {% csrf_token %}
+        <table align="center">
+            <tr>
+                <td>ArrivalCity</td>
+                <td>
+                    <select name="ddlArrivalCity" style="width:140px">
+                        {% for i in arrival_city %}
+                        <option>{{ i.Arrival_City }}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>DestinationCity</td>
+                <td>
+                    <select name="ddlDestinationCity" style="width:140px">
+                        {% for i in dest_city %}
+                        <option>{{ i.Destination_City }}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Date</td>
+                <td>
+                   <input type="date" name="txtDate">
+                </td>
+            </tr>
+            <tr>
+                <td><input type="submit" name="btnSub" value="Submit"></td>
+            </tr>
+        </table>
+    </form>
+
+</div>
+
+<div id="div2" style="float:right;width:75%">
+    {% if value %}
+        <table align="center" class="table">
+            <tr>
+                <th>FlightNumber</th>
+                <th>FlightName</th>
+                <th>Date Of Arrival</th>
+                <th>Arrival Time</th>
+                <th>Cost</th>
+                <th>ArrivalCity</th>
+                <th>DestinationCity</th>
+                 <th>BookFlight</th>
+            </tr>
+            {% for i in data %}
+                <tr>
+                    <td>{{i.FlightNumber}}</td>
+                    <td>{{i.FlightName}}</td>
+                    <td>{{i.Date}}</td>
+                    <td>{{i.ArrivalTime}}</td>
+                    <td>{{i.Cost}}</td>
+                    <td>{{i.ArrivalCity}}</td>
+                    <td>{{i.DestinationCity}}</td>
+                    <td><a href="{% url 'bookflight' i.id %}">BookFlight</a> </td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <h3>Flights is not available</h3>
+    {% endif %}
+</div>
+{% endblock %}

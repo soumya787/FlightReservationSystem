@@ -1,0 +1,34 @@
+{% extends 'navbar/adminnavbar.html' %}
+{% block title %}
+Display filghts
+{% endblock %}
+
+{% block content %}
+<h2 align="center">Filght Lists</h2>
+<table align="center" class="table">
+  <tr>
+    <th>id</th>
+    <th>FlightNumber</th>
+    <th>FlightName</th>
+    <th>Date Of Arrival</th>
+    <th>Arrival Time</th>
+    <th>Cost</th>
+    <th>ArrivalCity</th>
+    <th>DestinationCity</th>
+
+  </tr>
+  {% for i in data %}
+  <tr>
+    <td>{{ i.id }}</td>
+    <td>{{i.FlightNumber}}</td>
+    <td>{{i.FlightName}}</td>
+    <td>{{i.Date}}</td>
+    <td>{{i.ArrivalTime}}</td>
+    <td>{{i.Cost}}</td>
+    <td>{{i.ArrivalCity}}</td>
+    <td>{{i.DestinationCity}}</td>
+
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

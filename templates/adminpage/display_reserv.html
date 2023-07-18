@@ -1,0 +1,33 @@
+{% extends 'navbar/adminnavbar.html' %}
+
+{% block title %}
+ReservationPage
+{% endblock %}
+
+{% block content %}
+<div>
+    <table align="center" class="table">
+        <tr>
+            <th>Passenger FirstName</th>
+            <th>Passenger LastName</th>
+            <th>Passenger Age</th>
+            <th>Passenger Phno</th>
+            <th>Passenger BookingStatus</th>
+            <th>FlightData</th>
+            <th>Edit Status</th>
+        </tr>
+        {% for i in data %}
+        <tr>
+            <td>{{ i.first_name }}</td>
+            <td>{{ i.last_name }}</td>
+            <td>{{ i.age }}</td>
+            <td>{{ i.phno }}</td>
+            <td>{{ i.booking_status }}</td>
+            <td>{{ i.fight_data }}</td>
+            <td><a href="{% url 'status' i.id %}">Edit</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+{% endblock %}

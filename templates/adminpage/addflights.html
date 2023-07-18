@@ -1,0 +1,66 @@
+{% extends 'navbar/adminnavbar.html' %}
+
+{% block title %}
+Adding Flights
+{% endblock %}
+
+{% block content %}
+<h2 align="center"> Add flight details </h2>
+<form action="addflights" method="post">
+    {% csrf_token %}
+    <div align="center">
+         <table align="center">
+            <tr>
+                <td>FlightNumber</td>
+                <td><input type="text" name="txtFlightNum"></td>
+            </tr>
+             <tr>
+                <td>FlightName</td>
+                 <td>
+                     <select name="ddlFlightName">
+                     {% for i in flight %}
+                         <option>{{ i.FlightName }}</option>
+                      {% endfor %}
+                    </select>
+                 </td>
+            </tr>
+             <tr>
+                <td>ArrivalCity</td>
+                 <td>
+                     <select name="ddlArrivalCity">
+                         {% for i in arrival_city %}
+                         <option>{{ i.Arrival_City }}</option>
+                      {% endfor %}
+                     </select>
+                 </td>
+            </tr>
+             <tr>
+                <td>DestinationCity</td>
+                 <td>
+                     <select name="ddlDestCity">
+                         {% for i in dest_city %}
+                            <option>{{ i.Destination_City }}</option>
+                         {% endfor %}
+                     </select>
+                 </td>
+            </tr>
+             <tr>
+                <td>Date</td>
+                <td><input type="date" name="txtdate"></td>
+            </tr>
+             <tr>
+                <td>Time</td>
+                <td><input type="datetime-local" name="txtTime"></td>
+            </tr>
+             <tr>
+                <td>Cost</td>
+                <td><input type="number" name="txtCOST"></td>
+            </tr>
+             <tr>
+                <td><input type="submit" name="btnSub" value="Add"></td>
+            </tr>
+         </table>
+    </div>
+
+</form>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'navbar/adminnavbar.html' %}
+
+{% block title %}
+Status
+{% endblock %}
+
+{% block content %}
+<div>
+    <form method="post">
+        {% csrf_token %}
+        <table align="center" class="table">
+        <tr>
+            <th>Passenger FirstName</th>
+            <th>Passenger LastName</th>
+            <th>Passenger Age</th>
+            <th>Passenger Phno</th>
+            <th>Passenger BookingStatus</th>
+            <th>FlightData</th>
+        </tr>
+
+        <tr>
+            <td>{{ data.first_name }}</td>
+            <td>{{ data.last_name }}</td>
+            <td>{{ data.age }}</td>
+            <td>{{ data.phno }}</td>
+            <td><input type="text" value="{{ data.booking_status }}" name="txtStatus"></td>
+            <td>{{ data.fight_data }}</td>
+            <td><input type="submit" name="btnSub" value="Submit"> </td>
+        </tr>
+
+    </table>
+    </form>
+
+</div>
+{% endblock %}
